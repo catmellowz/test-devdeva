@@ -1,0 +1,11 @@
+.list-container {
+  @apply bg-white min-h-[500px];
+}
+
+.user-list-bar {
+  @apply flex justify-between items-center;
+}
+
+.users-list {
+  @apply text-gray-500 py-5 px-7;
+}

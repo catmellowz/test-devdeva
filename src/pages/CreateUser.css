@@ -1,0 +1,39 @@
+.create-container {
+  @apply bg-white min-h-[500px];
+}
+
+.create-bar {
+  @apply flex justify-between items-center;
+}
+
+.create-list {
+  @apply text-gray-500 py-5 px-7;
+}
+
+.input-container {
+  @apply col-start-5 col-end-12;
+}
+
+.management-profile {
+  @apply col-start-1 col-end-5;
+}
+.input-name-container {
+  /* @apply flex; */
+}
+.create-input-container {
+  @apply grid grid-cols-12;
+}
+
+.profile-upload-container {
+  @apply flex justify-center;
+}
+
+.button-manage-create-container {
+  @apply flex justify-end mr-10 pb-10 pt-10;
+}
+.button-manage-create {
+  @apply flex flex-col items-center;
+}
+.input-gender-date-container {
+  @apply grid grid-cols-2 gap-10;
+}
