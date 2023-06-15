@@ -22,6 +22,7 @@ export default function CreateUser() {
   const id = searchParams.get('id');
 
   const [input, setInput] = useState(initialInput);
+  const [profilePic, setProfilePic] = useState();
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -45,6 +46,15 @@ export default function CreateUser() {
     }
   };
 
+  const onChangeProfilePic = (e) => {
+    const file = e.target.files[0];
+    // console.log(e.target.files[0]);
+    const profilePic = URL.createObjectURL(file);
+    // console.log(profilePic);
+    setProfilePic(profilePic);
+    console.log(profilePic);
+  };
+
   useEffect(() => {
     if (id) {
       const user = userList.find((e) => +id === e.id);
@@ -66,15 +76,23 @@ export default function CreateUser() {
           <div className='create-input-container'>
             <div className='management-profile'>
               <div className='profile-upload-container'>
-                <UploadProfile />
+                <UploadProfile profilePic={profilePic} />
               </div>
               <div className='button-manage-create'>
-                <Button
-                  text={'Upload profile Picture'}
-                  className={'button-blue-upload '}
-                >
-                  <input type='file'></input>
-                </Button>
+                <div>
+                  <label
+                    htmlFor='file-input'
+                    className='custom-file-button'
+                  >
+                    <input
+                      onChange={onChangeProfilePic}
+                      type='file'
+                      id='file-input'
+                      className='hidden-file-input'
+                    />
+                    Upload Profile Picture
+                  </label>
+                </div>
                 <Button
                   text={'Delete Picture'}
                   className={'button-red-pic'}

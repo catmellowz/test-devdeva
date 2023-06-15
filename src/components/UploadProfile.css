@@ -1,3 +1,7 @@
 .profile-creater {
-  @apply w-[150px] h-[150px] border-2 border-gray-400 rounded-full bg-white;
+  @apply w-[150px] h-[150px] border-2 border-gray-400 rounded-full bg-white overflow-hidden;
+}
+
+.profile-creater img {
+  @apply w-[100%] h-[100%] object-cover;
 }

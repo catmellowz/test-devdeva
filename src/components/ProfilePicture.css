@@ -1,3 +1,18 @@
 .profile {
-  @apply w-10 h-10 rounded-full bg-white border-solid border-2 border-gray-400;
+  @apply rounded-full bg-white border-solid border-2 border-gray-400;
+}
+
+.profile-bar {
+  @apply w-[40px] h-[40px] overflow-hidden;
+}
+.profile-bar img {
+  @apply w-[100%] h-[100%] object-cover;
+}
+
+.profile-table-list {
+  @apply w-[50px] h-[50px] overflow-hidden;
+}
+
+.profile-table-list img {
+  @apply w-[100%] h-[100%] object-cover;
 }

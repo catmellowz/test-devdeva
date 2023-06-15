@@ -12,5 +12,5 @@ th {
 }
 
 .profile-table {
-  @apply flex justify-center pt-2;
+  @apply flex justify-center pt-5;
 }

@@ -17,9 +17,7 @@
 .management-profile {
   @apply col-start-1 col-end-5;
 }
-.input-name-container {
-  /* @apply flex; */
-}
+
 .create-input-container {
   @apply grid grid-cols-12;
 }
@@ -36,4 +34,12 @@
 }
 .input-gender-date-container {
   @apply grid grid-cols-2 gap-10;
+}
+
+.custom-file-button {
+  @apply inline-block m-4 py-2 px-3 cursor-pointer text-white bg-[rgba(0,144,255,255)] rounded hover:bg-blue-600 text-center;
+}
+
+.custom-file-button input[type='file'] {
+  @apply hidden;
 }

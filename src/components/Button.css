@@ -6,10 +6,6 @@
   @apply bg-[rgba(0,144,255,255)] rounded hover:bg-blue-600 w-[80px] h-[40px] text-center;
 }
 
-.button-blue-upload {
-  @apply bg-[rgba(0,144,255,255)] rounded hover:bg-blue-600 text-center w-[190px];
-}
-
 .button-yellow {
   @apply bg-yellow-400  hover:bg-yellow-500;
 }
