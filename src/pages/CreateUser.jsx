@@ -4,12 +4,14 @@ import UploadProfile from '../components/UploadProfile';
 import InputName from '../components/InputName';
 import InputList from '../components/InputList';
 import InputDate from '../components/InputDate';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { FaSpinner } from 'react-icons/fa';
 import useUserList from '../hooks/useUserList';
 import './CreateUser.css';
 import { useEffect, useState } from 'react';
 const initialInput = {
   id: 0,
+  profilePicture: null,
   firstName: '',
   lastName: '',
   gender: '',
@@ -21,38 +23,65 @@ export default function CreateUser() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id');
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigateHome = useNavigate();
+
   const [input, setInput] = useState(initialInput);
+
   const [profilePic, setProfilePic] = useState();
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
+    setError('');
   };
 
   const handleChangeDate = (e) => {
     setInput({ ...input, ['birthday']: e });
   };
-  const handleSave = (e) => {
-    if (!id) {
-      setUserList([
-        ...userList,
-        { ...input, id: userList.length + 1 },
-      ]);
-    } else {
-      const userIndex = userList.findIndex((e) => +id === e.id);
 
-      const userClone = [...userList];
-      userClone[userIndex] = input;
-      setUserList(userClone);
+  const handleSave = (e) => {
+    e.preventDefault();
+    setError('');
+    if (!input.firstName || !input.lastName) {
+      setError('Please fill in all required fields');
+      return;
     }
+    const confirmSave = window.confirm(
+      'Are you sure you want to save?'
+    );
+    if (confirmSave) {
+      if (!id) {
+        setIsLoading(true);
+        setUserList([
+          ...userList,
+          { ...input, id: userList.length + 1 },
+        ]);
+      } else {
+        const userIndex = userList.findIndex((e) => +id === e.id);
+        const userClone = [...userList];
+        userClone[userIndex] = input;
+        setUserList(userClone);
+      }
+
+      setTimeout(() => {
+        setIsLoading(false);
+        navigateHome('/');
+      }, 2000);
+    } else {
+      setIsLoading(fasle);
+    }
+  };
+
+  const handleDeletePic = (e) => {
+    setProfilePic(null);
   };
 
   const onChangeProfilePic = (e) => {
     const file = e.target.files[0];
     // console.log(e.target.files[0]);
     const profilePic = URL.createObjectURL(file);
-    // console.log(profilePic);
     setProfilePic(profilePic);
-    console.log(profilePic);
   };
 
   useEffect(() => {
@@ -71,7 +100,11 @@ export default function CreateUser() {
         <div className='create-container'>
           <div className='create-bar'>
             <div className='create-list'>Create new User</div>
-            <Button text={'Add +'} className={'button-blue-add'} />
+            <Button
+              onClick={handleSave}
+              text={'Add +'}
+              className={'button-blue-add'}
+            />
           </div>
           <div className='create-input-container'>
             <div className='management-profile'>
@@ -94,6 +127,7 @@ export default function CreateUser() {
                   </label>
                 </div>
                 <Button
+                  onClick={handleDeletePic}
                   text={'Delete Picture'}
                   className={'button-red-pic'}
                 />
@@ -110,7 +144,13 @@ export default function CreateUser() {
                       value={input.firstName}
                       name={'firstName'}
                     />
+                    {error && !input.firstName && (
+                      <div className='input-error'>
+                        First name is required
+                      </div>
+                    )}
                   </div>
+
                   <div>
                     <div className='input-text-name '>Last Name</div>
                     <InputName
@@ -119,6 +159,11 @@ export default function CreateUser() {
                       value={input.lastName}
                       name={'lastName'}
                     />
+                    {error && !input.lastName && (
+                      <div className='input-error'>
+                        Last name is required
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className='input-gender-date-container'>
@@ -142,16 +187,26 @@ export default function CreateUser() {
               </div>
             </div>
           </div>
-          <div className='button-manage-create-container '>
-            <Link to='/'>
-              <Button text={'CANCEL'} className={'button-gray'} />
-            </Link>
-            <Button
-              onClick={handleSave}
-              text={'SAVE'}
-              className={'button-green'}
-            />
-          </div>
+          {isLoading ? (
+            <div className='spinner-overlay'>
+              <FaSpinner
+                className='text-blue-500 animate-spin'
+                size={24}
+              />
+            </div>
+          ) : (
+            <div className='button-manage-create-container '>
+              <Link to='/'>
+                <Button text={'CANCEL'} className={'button-gray'} />
+              </Link>
+              <Button
+                onClick={handleSave}
+                disabled={isLoading}
+                text={'SAVE'}
+                className={'button-green'}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -9,9 +9,7 @@ export default function InputList({ name, onChange, value }) {
         value={value}
         name={name}
       >
-        <option className='input-selected' value='select'>
-          -- Please select Gender --
-        </option>
+        <option value='-'>-- Please select Gender --</option>
         <option value='Male'>Male</option>
         <option value='Female'>Female</option>
         <option value='Other'>Other</option>

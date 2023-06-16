@@ -35,11 +35,13 @@ export default function TableList({ userList, handleDelete }) {
                 </td>
                 <td>{el.firstName}</td>
                 <td>{el.lastName}</td>
-                <td>{el.gender}</td>
+                <td>{el.gender ? el.gender : '-'}</td>
                 <td>
                   {el.birthday
-                    .toLocaleDateString('en-US', options)
-                    .replace(',', '')}
+                    ? el.birthday
+                        .toLocaleDateString('en-SG', options)
+                        .replace(',', '')
+                    : '-'}
                 </td>
                 <td>
                   <Link to={`/create?id=${el.id}`}>
