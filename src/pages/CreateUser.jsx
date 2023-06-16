@@ -58,6 +58,7 @@ export default function CreateUser() {
           { ...input, id: userList.length + 1 },
         ]);
       } else {
+        setIsLoading(true);
         const userIndex = userList.findIndex((e) => +id === e.id);
         const userClone = [...userList];
         userClone[userIndex] = input;
@@ -81,7 +82,7 @@ export default function CreateUser() {
     const file = e.target.files[0];
     // console.log(e.target.files[0]);
     const profilePic = URL.createObjectURL(file);
-    setProfilePic(profilePic);
+    setInput({ ...input, ['profilePicture']: profilePic });
   };
 
   useEffect(() => {
@@ -99,17 +100,25 @@ export default function CreateUser() {
         </div>
         <div className='create-container'>
           <div className='create-bar'>
-            <div className='create-list'>Create new User</div>
-            <Button
-              onClick={handleSave}
-              text={'Add +'}
-              className={'button-blue-add'}
-            />
+            {id ? (
+              <div className='create-list'>Edit User</div>
+            ) : (
+              <div className='create-list'>Create new User</div>
+            )}
+            {id ? (
+              ''
+            ) : (
+              <Button
+                onClick={handleSave}
+                text={'Add +'}
+                className={'button-blue-add'}
+              />
+            )}
           </div>
           <div className='create-input-container'>
             <div className='management-profile'>
               <div className='profile-upload-container'>
-                <UploadProfile profilePic={profilePic} />
+                <UploadProfile profilePic={input.profilePicture} />
               </div>
               <div className='button-manage-create'>
                 <div>

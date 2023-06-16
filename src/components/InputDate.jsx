@@ -10,6 +10,9 @@ export default function InputDate({ onChange, selectedDate }) {
           selected={selectedDate}
           placeholderText='DD/MM/YYYY'
           onChange={onChange}
+          dateFormat='dd/MM/yyyy'
+          showMonthDropdown
+          showYearDropdown
         />
       </div>
     </>
