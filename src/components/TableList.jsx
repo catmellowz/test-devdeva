@@ -27,8 +27,8 @@ export default function TableList({ userList, handleDelete }) {
             </tr>
           </thead>
           <tbody>
-            {userList.map((el) => (
-              <tr key={el.id}>
+            {userList.map((el, idx) => (
+              <tr key={el.id + idx}>
                 <td className={'profile-table'}>
                   <ProfilePicture
                     profilePic={el.profilePicture}
