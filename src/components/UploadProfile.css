@@ -1,5 +1,5 @@
 .profile-creater {
-  @apply w-[150px] h-[150px] border-2 border-gray-400 rounded-full bg-white overflow-hidden;
+  @apply sm:w-[100px] sm:h-[100px] lg:w-[150px] lg:h-[150px]  border-2 border-gray-400 rounded-full bg-white overflow-hidden;
 }
 
 .profile-creater img {

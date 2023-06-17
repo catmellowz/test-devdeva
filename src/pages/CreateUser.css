@@ -11,11 +11,13 @@
 }
 
 .input-container {
-  @apply col-start-5 col-end-12;
+  @apply col-start-5 col-end-12 sm:col-span-12 md:col-start-5 md:col-end-12;
 }
-
+.input-container-main {
+  @apply grid grid-rows-2 gap-10 sm:p-4;
+}
 .management-profile {
-  @apply col-start-1 col-end-5;
+  @apply col-start-1 col-end-5 sm:col-span-12 md:col-span-4;
 }
 
 .create-input-container {

@@ -1,27 +1,27 @@
 .button {
-  @apply text-white font-bold py-2 px-4 m-2 text-sm;
+  @apply text-white md:py-2 md:px-4 md:m-2 text-sm;
 }
 
 .button-blue-add {
-  @apply bg-[rgba(0,144,255,255)] rounded hover:bg-blue-600 w-[80px] h-[40px] text-center;
+  @apply bg-[rgba(0,144,255,255)] rounded hover:bg-blue-600 w-[80px] h-[40px] text-center sm:m-2;
 }
 
 .button-yellow {
-  @apply bg-yellow-400  hover:bg-yellow-500;
+  @apply bg-yellow-400  hover:bg-yellow-500 sm:hidden md:block;
 }
 
 .button-red {
-  @apply bg-red-500 hover:bg-red-600;
+  @apply bg-red-500 hover:bg-red-600 sm:hidden md:block;
 }
 
 .button-red-pic {
-  @apply bg-red-500 rounded hover:bg-red-600 w-[130px];
+  @apply bg-red-500 rounded hover:bg-red-600 sm:w-[120px] sm:p-2 mb-5 xl:w-[130px];
 }
 
 .button-green {
-  @apply bg-green-500 rounded hover:bg-green-600;
+  @apply bg-green-500 rounded hover:bg-green-600 sm:p-2 sm:ml-2;
 }
 
 .button-gray {
-  @apply bg-gray-500 rounded hover:bg-gray-600;
+  @apply bg-gray-500 rounded hover:bg-gray-600 sm:p-2;
 }

@@ -1,5 +1,5 @@
 .input-name-container {
-  @apply h-[40px] p-4 rounded-md border border-gray-400 focus:outline-none focus:ring-gray-500 focus:border-gray-500;
+  @apply sm:text-[12px] md:text-xl xl:text-xl h-[40px] p-4 rounded-md border border-gray-400 focus:outline-none focus:ring-gray-500 focus:border-gray-500;
 }
 
 .input-text-name {

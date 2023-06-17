@@ -124,7 +124,7 @@ export default function CreateUser() {
                 <div>
                   <label
                     htmlFor='file-input'
-                    className='custom-file-button'
+                    className='custom-file-button sm:hidden md:block'
                   >
                     <input
                       onChange={onChangeProfilePic}
@@ -133,6 +133,18 @@ export default function CreateUser() {
                       className='hidden-file-input'
                     />
                     Upload Profile Picture
+                  </label>
+                  <label
+                    htmlFor='file-input'
+                    className='custom-file-button md:hidden'
+                  >
+                    <input
+                      onChange={onChangeProfilePic}
+                      type='file'
+                      id='file-input'
+                      className='hidden-file-input '
+                    />
+                    Upload
                   </label>
                 </div>
                 <Button
@@ -143,7 +155,7 @@ export default function CreateUser() {
               </div>
             </div>
             <div className='input-container'>
-              <div className='grid grid-rows-2 gap-10'>
+              <div className='input-container-main'>
                 <div className='input-gender-date-container'>
                   <div>
                     <div className='input-text-name '>First Name</div>

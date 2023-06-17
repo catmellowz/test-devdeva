@@ -1,16 +1,28 @@
 .main-table {
-  @apply flex justify-center;
+  @apply sm:text-[10px] flex justify-center;
 }
 
 th,
 td {
-  @apply w-[170px] text-center;
+  @apply xl:w-[170px] text-center;
 }
 
 th {
-  @apply bg-gray-300 p-3;
+  @apply bg-gray-300 sm:p-1 md:p-4 xl:p-4;
 }
 
 .profile-table {
-  @apply flex justify-center pt-5;
+  @apply flex justify-center sm:pt-2 md:pt-5 xl:pt-5;
+}
+
+.edit-button {
+  @apply md:hidden m-2 w-[20px] h-[20px] cursor-pointer hover:text-yellow-500;
+}
+
+.delete-button {
+  @apply md:hidden m-2 w-[20px] h-[20px] cursor-pointer hover:text-red-500;
+}
+
+.edit-delete-button {
+  @apply flex mb-5 p-2;
 }

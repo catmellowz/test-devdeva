@@ -4,10 +4,14 @@ import TableList from '../components/TableList';
 import './UsersList.css';
 import { Link } from 'react-router-dom';
 import userUserList from '../hooks/useUserList';
+import Pagination from '../components/Pagination';
 
 export default function UsersList() {
   const { userList, handleDelete } = userUserList();
 
+  const totalPage = Math.ceil(userList.length / 5);
+
+  console.log(totalPage);
   return (
     <>
       <div>
@@ -26,6 +30,7 @@ export default function UsersList() {
               userList={userList}
               handleDelete={handleDelete}
             />
+            <Pagination totalPage={totalPage} />
           </div>
         </div>
       </div>
